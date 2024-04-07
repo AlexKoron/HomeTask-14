@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Завдання 1</h1>
+    <p>
+      Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими
+      властивостями ----- Властивості ------ - назва компанії на час розробки
+      (назву періодично змінюють) - власник компанії - споснсори (масив
+      спонсорів) * прізвище спонсора * ім’я спонсора * сума вкладень спонсора -
+      рік випуску - вартість сайту
+    </p>
+    <script>
+      //  - the name of the company at the time of development (the name is periodically changed)
+      // -	company owner
+      // - sponsors (array of sponsors)
+      //        * surname of the sponsor
+      //        * name of the sponsor
+      //        * the amount of the sponsor's investment
+      // -	graduation year
+      // - the cost of the site
+
+      const sitesDevelopedCompany = [
+        {
+          developmentName: "MOTO 0",
+          companyOwner: "Peter_Habment",
+          sponsors: {
+            surnameSponsors: "Makalister",
+            nameSponsors: "Jon",
+            investmentAmount: 2034,
+          },
+          graduationYear: 2001,
+          costSite: 52,
+        },
+        {
+          developmentName: "MOTO 1",
+          companyOwner: "Peter_Habment",
+          sponsors: {
+            surnameSponsors: "Makalister",
+            nameSponsors: "Jon",
+            investmentAmount: 10000002564,
+          },
+          graduationYear: 2008,
+          costSite: 51,
+        },
+        {
+          developmentName: "MOTO 2",
+          companyOwner: "Peter_Habment",
+          sponsors: {
+            surnameSponsors: "Makalister",
+            nameSponsors: "Jon",
+            investmentAmount: 1035489725,
+          },
+          graduationYear: 2018,
+          costSite: 50,
+        },
+      ];
+      console.log(sitesDevelopedCompany);
+      // ======  загальну вартість усіх сайтів
+      let res = sitesDevelopedCompany.reduce(
+        (prevSum, site) => prevSum + site.costSite,
+        0
+      );
+      document.write(`загальн вартість усіх сайтів = ${res} <br>`);
+      // ======  кількість сайтів, що було зроблено між 2000 та 2009 рр.
+      let res1 = sitesDevelopedCompany.reduce(
+        (prevSum, site) =>
+          site.graduationYear > 2000 && site.graduationYear < 2009
+            ? prevSum + 1
+            : prevSum,
+        0
+      );
+      document.write(
+        `кількість сайтів, що було зроблено між 2000 та 2009 рр = ${res1}<br>`
+      );
+      // ======  ккількість сайтів, де сума спонсорських вкладень була більшою за 100000
+      let res2 = sitesDevelopedCompany.reduce(
+        (prevSum, investment) =>
+          investment.sponsors.investmentAmount > 100000 ? prevSum + 1 : prevSum,
+        0
+      );
+      document.write(
+        `кількість сайтів, де сума спонсорських вкладень була більшою за 100000 = ${res2}<br>`
+      );
+    </script>
+  </body>
+</html>
